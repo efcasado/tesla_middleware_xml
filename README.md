@@ -1,6 +1,9 @@
 # Tesla XML Middleware
 
 [![Build Status](https://github.com/efcasado/tesla_middleware_xml/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/efcasado/tesla_middleware_xml/actions/workflows/build.yml)
+[![hex.pm](https://img.shields.io/hexpm/l/tesla_middleware_xml.svg)](https://hex.pm/packages/tesla_middleware_xml)
+[![hex.pm](https://img.shields.io/hexpm/v/tesla_middleware_xml.svg)](https://hex.pm/packages/tesla_middleware_xml)
+[![Hexdocs.pm](https://img.shields.io/badge/hex-docs-purple.svg)](https://hexdocs.pm/tesla_middleware_xml/)
 [![github.com](https://img.shields.io/github/last-commit/efcasado/tesla_middleware_xml.svg)](https://github.com/efcasado/tesla_middleware_xml)
 
 [Tesla](https://github.com/elixir-tesla/tesla) middleware for encoding requests
