@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/efcasado/tesla_middleware_xml/compare/v1.0.0...v1.0.1) (2024-05-10)
+
+
+### 🛠 Builds
+
+* add description metadata ([41c0453](https://github.com/efcasado/tesla_middleware_xml/commit/41c0453b0108616267f41de57f19c5f921e86d3d))
+
 ## 1.0.0 (2024-05-10)
 
 
