@@ -88,7 +88,9 @@ defmodule Tesla.Middleware.XmlTest do
     test "post xml stream" do
       stream = Stream.map(1..3, fn i -> %{"id" => i} end)
       assert {:ok, env} = Client.post("/stream", stream)
-      assert env.body == ~s|<root><id>1</id></root>\n---<root><id>2</id></root>\n---<root><id>3</id></root>\n|
+
+      assert env.body ==
+               ~s|<root><id>1</id></root>\n---<root><id>2</id></root>\n---<root><id>3</id></root>\n|
     end
 
     test "return error when decoding invalid xml format" do
@@ -96,7 +98,8 @@ defmodule Tesla.Middleware.XmlTest do
     end
 
     test "raise error when decoding non-utf8 xml" do
-      assert {:error, {Tesla.Middleware.XML, :deserialize, _}} = Client.get("/invalid-xml-encoding")
+      assert {:error, {Tesla.Middleware.XML, :deserialize, _}} =
+               Client.get("/invalid-xml-encoding")
     end
   end
 
@@ -163,7 +166,7 @@ defmodule Tesla.Middleware.XmlTest do
     test "encode stream" do
       adapter = fn env ->
         assert IO.iodata_to_binary(Enum.to_list(env.body)) ==
-          ~s|<root><id>1</id></root>\n<root><id>2</id></root>\n<root><id>3</id></root>\n|
+                 ~s|<root><id>1</id></root>\n<root><id>2</id></root>\n<root><id>3</id></root>\n|
       end
 
       stream = Stream.map(1..3, fn i -> %{"id" => i} end)
