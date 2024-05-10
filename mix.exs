@@ -7,6 +7,7 @@ defmodule Tesla.Middleware.XML.MixProject do
       version: "1.0.0",
       elixir: "~> 1.15",
       start_permanent: Mix.env() == :prod,
+      description: description(),
       package: package(),
       docs: docs(),
       deps: deps()
@@ -17,6 +18,12 @@ defmodule Tesla.Middleware.XML.MixProject do
     [
       extra_applications: [:logger]
     ]
+  end
+
+  defp description do
+    """
+    Tesla middleware for encoding requests and decoding responses as XML.
+    """
   end
 
   defp package do
