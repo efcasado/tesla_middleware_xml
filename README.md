@@ -1,5 +1,6 @@
 # Tesla XML Middleware
 
+[![Build Status](https://github.com/efcasado/tesla_middleware_xml/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/efcasado/tesla_middleware_xml/actions/workflows/build.yml)
 [![github.com](https://img.shields.io/github/last-commit/efcasado/tesla_middleware_xml.svg)](https://github.com/efcasado/tesla_middleware_xml)
 
 [Tesla](https://github.com/elixir-tesla/tesla) middleware for encoding requests
