@@ -40,3 +40,8 @@ This project uses [Conventional Commits](https://www.conventionalcommits.org/en/
 and [Semantic Versioning[(https://semver.org/). The list of supported commit
 types can be found
 [here](https://github.com/insurgent-lab/conventional-changelog-preset?tab=readme-ov-file#commit-types).
+
+
+## Resources
+
+- [JSON and XML conversion](https://wiki.open311.org/JSON_and_XML_Conversion/)
