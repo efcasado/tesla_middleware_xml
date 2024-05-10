@@ -8,6 +8,7 @@ defmodule Tesla.Middleware.XML.MixProject do
       elixir: "~> 1.15",
       start_permanent: Mix.env() == :prod,
       package: package(),
+      docs: docs(),
       deps: deps()
     ]
   end
@@ -25,6 +26,13 @@ defmodule Tesla.Middleware.XML.MixProject do
       links: %{
         "GitHub" => "https://github.com/efcasado/tesla_middleware_xml"
       }
+    ]
+  end
+
+  defp docs() do
+    [
+      main: "readme",
+      extras: ["README.md"]
     ]
   end
 
