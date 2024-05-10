@@ -65,7 +65,7 @@ defmodule Tesla.Middleware.XML do
        |> Tesla.put_headers([{"content-type", encode_content_type(opts)}])}
     else
       false -> {:ok, env}
-    error -> error
+      error -> error
     end
   end
 
@@ -100,7 +100,7 @@ defmodule Tesla.Middleware.XML do
       {:ok, %{env | body: body}}
     else
       false -> {:ok, env}
-    error -> error
+      error -> error
     end
   end
 
