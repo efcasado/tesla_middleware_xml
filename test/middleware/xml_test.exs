@@ -217,4 +217,27 @@ defmodule Tesla.Middleware.XmlTest do
       assert env.body == "ok"
     end
   end
+
+  describe "Engine: Saxy" do
+    defmodule SaxyClient do
+      use Tesla
+
+      plug Tesla.Middleware.XML, engine: Saxy
+
+      adapter fn env ->
+        {:ok,
+         %{
+           env
+           | status: 200,
+             headers: [{"content-type", "application/xml"}],
+             body: ~s|<value>123</value>|
+         }}
+      end
+    end
+
+    test "decode with custom engine options" do
+      assert {:ok, env} = SaxyClient.get("/decode")
+      assert env.body == {"value", [], ["123"]}
+    end
+  end
 end

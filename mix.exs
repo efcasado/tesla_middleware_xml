@@ -46,7 +46,10 @@ defmodule Tesla.Middleware.XML.MixProject do
   defp deps do
     [
       {:tesla, "~> 1.9"},
-      {:xml_json, "~> 0.4.2"},
+
+      # xml parsers
+      {:saxy, "~> 1.5", optional: true},
+      {:xml_json, "~> 0.4.2", optional: true},
 
       # development
       {:ex_doc, "~> 0.31", only: :dev, runtime: false}
