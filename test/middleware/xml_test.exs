@@ -81,7 +81,7 @@ defmodule Tesla.Middleware.XmlTest do
     end
 
     test "return error on encoding error" do
-      assert {:error, {Tesla.Middleware.XML, :serialize, _}} =
+      assert {:error, {Tesla.Middleware.XML, :encode, _}} =
                Client.post("/encode", %{pid: self()})
     end
 
@@ -94,11 +94,11 @@ defmodule Tesla.Middleware.XmlTest do
     end
 
     test "return error when decoding invalid xml format" do
-      assert {:error, {Tesla.Middleware.XML, :deserialize, _}} = Client.get("/invalid-xml-format")
+      assert {:error, {Tesla.Middleware.XML, :decode, _}} = Client.get("/invalid-xml-format")
     end
 
     test "raise error when decoding non-utf8 xml" do
-      assert {:error, {Tesla.Middleware.XML, :deserialize, _}} =
+      assert {:error, {Tesla.Middleware.XML, :decode, _}} =
                Client.get("/invalid-xml-encoding")
     end
   end

@@ -3,8 +3,11 @@ defmodule Tesla.Middleware.XML do
   @moduledoc """
   Encode requests and decode responses as XML.
 
-  This middleware uses [xml_json](https://hex.pm/packages/xml_json) for the encoding
+  This middleware can be configured to use different engines for the encoding
   and decoding of XML requests and responses.
+
+  Remember to add `{:saxy, "~> 1.5"}` (or another supported engine) to the
+  dependencies of your project.
 
   If you only need to encode the request body or decode the response body,
   you can use `Tesla.Middleware.EncodeXml` or `Tesla.Middleware.DecodeXml`
@@ -19,26 +22,23 @@ defmodule Tesla.Middleware.XML do
 
     plug Tesla.Middleware.XML # use default settings
     # or
-    plug Tesla.Middleware.XML, convention: AwsApi
-    # or
-    plug Tesla.Middleware.XML, xml_json_opts: [preserve_root: true]
+    plug Tesla.Middleware.XML, engine: XmlJson, engine_opts: [convention: AwsApi]
   end
   ```
 
   ### Options
-  - `:convention` - encode/decode convention, eg. `AwsApi`, `BadgerFish`, `Parker` (defaults to `Parker`)
   - `:decode` - decoding function
   - `:decode_content_types` - list of additional decodable content-types
   - `:encode` - encoding function
   - `:encode_content_type` - content-type to be used in request header
-  - `:xml_json_opts` - optional `xml_json` opts
+  - `:engine` - encode/decode engine, eg. `Saxy`, `XmlJson` (defaults to `Parker`)
+  - `:engine_opts` - optional engine opts
   """
   @behaviour Tesla.Middleware
 
   @default_content_types ["application/xml"]
-  @default_convention Parker
   @default_encode_content_type "application/xml"
-  @default_xml_json_opts []
+  @default_engine XmlJson
 
   @impl Tesla.Middleware
   def call(env, next, opts) do
@@ -71,7 +71,7 @@ defmodule Tesla.Middleware.XML do
 
   defp encode_body(%Stream{} = body, opts), do: {:ok, encode_stream(body, opts)}
   defp encode_body(body, opts) when is_function(body), do: {:ok, encode_stream(body, opts)}
-  defp encode_body(body, opts), do: process(body, :serialize, opts)
+  defp encode_body(body, opts), do: process(body, :encode, opts)
 
   defp encode_content_type(opts),
     do: Keyword.get(opts, :encode_content_type, @default_encode_content_type)
@@ -126,7 +126,7 @@ defmodule Tesla.Middleware.XML do
   defp decode_body(body, opts) when is_struct(body, Stream) or is_function(body),
     do: {:ok, decode_stream(body, opts)}
 
-  defp decode_body(body, opts), do: process(body, :deserialize, opts)
+  defp decode_body(body, opts), do: process(body, :decode, opts)
 
   defp decode_stream(body, opts) do
     Stream.map(body, fn chunk ->
@@ -149,15 +149,15 @@ defmodule Tesla.Middleware.XML do
   end
 
   defp do_process(data, op, opts) do
-    # :serialize/:deserialize
+    # :encode/:decode
     if fun = opts[op] do
       fun.(data)
     else
-      convention = Keyword.get(opts, :convention, @default_convention)
-      opts = Keyword.get(opts, :xml_json_opts, @default_xml_json_opts)
+      engine = Keyword.get(opts, :engine, @default_engine)
+      opts = Keyword.get(opts, :engine_opts, [])
 
-      module = Module.concat(XmlJson, convention)
-      apply(module, op, [data, opts])
+      adapter = Module.concat(Tesla.Middleware.XML.Adapters, engine)
+      apply(adapter, op, [data, opts])
     end
   end
 end
