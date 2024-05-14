@@ -1,3 +1,23 @@
+## [2.0.0](https://github.com/efcasado/tesla_middleware_xml/compare/v1.0.1...v2.0.0) (2024-05-14)
+
+
+### ⚠ Breaking changes
+
+* add support for different engines
+
+### ✨ Features
+
+* add support for different engines ([4269d7d](https://github.com/efcasado/tesla_middleware_xml/commit/4269d7d228e502a4657d3d5f28681435abfe529b))
+* add support for saxy ([fb98ff4](https://github.com/efcasado/tesla_middleware_xml/commit/fb98ff4d35b1aea24626c520c5a2b40ccb73c167))
+
+
+### ♻️ Chores
+
+* add 'JSON and XML conversion' resource ([60e0ec0](https://github.com/efcasado/tesla_middleware_xml/commit/60e0ec0512470f63684c4cb171c456c821c83cfb))
+* add badges to README.md ([3e47a71](https://github.com/efcasado/tesla_middleware_xml/commit/3e47a714523aceb332f21dacd1544e72904e73bd))
+* fix formatting issue in README.md ([553913a](https://github.com/efcasado/tesla_middleware_xml/commit/553913aca0d6ff7f02d33ec3bbbdb05984a71c3d))
+* update README.md ([1bb2941](https://github.com/efcasado/tesla_middleware_xml/commit/1bb2941ea87778a86fcbc2f19d293e8a2eea6c4c))
+
 ## [1.0.1](https://github.com/efcasado/tesla_middleware_xml/compare/v1.0.0...v1.0.1) (2024-05-10)
 
 

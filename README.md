@@ -26,7 +26,7 @@ dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:tesla_middleware_xml, "~> 1.0.1"}
+    {:tesla_middleware_xml, "~> 2.0.0"}
   ]
 end
 ```
