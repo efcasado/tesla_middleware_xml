@@ -45,3 +45,10 @@ types can be found
 ## Resources
 
 - [JSON and XML conversion](https://wiki.open311.org/JSON_and_XML_Conversion/)
+
+
+## Acknowledgements
+
+- [Tesla JSON Middleware](https://github.com/elixir-tesla/tesla/blob/52bf0ff600cd452471d3fc518f53436f2e48e60f/lib/tesla/middleware/json.ex)
+- [Saxy](https://github.com/qcam/saxy)
+- [XmlJson](https://github.com/bennyhat/xml_json)
